@@ -6,17 +6,31 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
     
     private Rigidbody rb;
+    
+    
     private int jumpsRemaining;
     private const int MAX_JUMPS = 2; // Para doble salto
     private bool isGrounded;
+    
+    
     private float hInput;
     private float vInput;
+    
+    private Transform camTransform;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         jumpsRemaining = MAX_JUMPS;
+        
+        // Para evitar el saltito del principio y que aparezca en medio de la sala
+        transform.position = new Vector3((float)0.427, (float)0.543, (float)-1.506);
+        
+        if (Camera.main != null) 
+        {
+            camTransform = Camera.main.transform;
+        }
     }
 
     // Update is called once per frame
@@ -55,8 +69,22 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 direction = new Vector3(hInput, 0, vInput).normalized;
-        rb.AddForce(direction * speed, ForceMode.Force);
+        if (camTransform)
+        {
+            // Calculamos direcciones relativas a la cámara
+            Vector3 forward = camTransform.forward;
+            Vector3 right = camTransform.right;
+
+            // "Aplanamos" para que no salte al presionar W
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+
+            // Dirección final
+            Vector3 direction = (forward * vInput + right * hInput).normalized;
+            rb.AddForce(direction * speed, ForceMode.Force);
+        }
     }
     
     private bool IsGrounded()

@@ -17,15 +17,18 @@ public class Player : MonoBehaviour
     private float vInput;
     
     private Transform camTransform;
+
+    void Awake()
+    {
+        // Para evitar el saltito del principio y que aparezca en medio de la sala
+        transform.position = new Vector3((float)0.427, (float)0.543, (float)-1.506);
+        rb = GetComponent<Rigidbody>();
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         jumpsRemaining = MAX_JUMPS;
-        
-        // Para evitar el saltito del principio y que aparezca en medio de la sala
-        transform.position = new Vector3((float)0.427, (float)0.543, (float)-1.506);
         
         if (Camera.main != null) 
         {

@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 10
   jumpForce: 5
+  hasKey: 0
 --- !u!33 &8783318545888884918
 MeshFilter:
   m_ObjectHideFlags: 0

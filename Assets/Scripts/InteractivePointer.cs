@@ -7,7 +7,7 @@ public class InteractivePointer : MonoBehaviour
     public Color normalColor = Color.white;
     public Color interactColor = Color.red;
     
-    public float interactDistance = 10f; // Distancia máxima para interactuar
+    public float interactDistance = 12f; // Distancia máxima para interactuar
     private Camera myCamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7597101591625641585}
+  - component: {fileID: 4275487616296292431}
   - component: {fileID: 911459562771441396}
   - component: {fileID: 3600482122297269760}
   - component: {fileID: 5912723373080792818}
@@ -34,6 +35,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4275487616296292431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187265992877606683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f90ce5d009c69d4d92383c13ecc893c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyItem
+  pickupSound: {fileID: 8300000, guid: b0dc4ee0af565e84eb646e1f6120dfe9, type: 3}
 --- !u!33 &911459562771441396
 MeshFilter:
   m_ObjectHideFlags: 0

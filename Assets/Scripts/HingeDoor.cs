@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class HingeDoor : Interactable
 {
+    [SerializeField]public AudioClip openSound;
+    [SerializeField]public AudioClip lockedSound;
+    
     private HingeJoint hinge;
     private JointMotor motor;
     private bool isOpening = false;
@@ -17,11 +20,18 @@ public class HingeDoor : Interactable
     {
         if (player.hasKey)
         {
+            if(openSound)
+            {
+                AudioManager.Manager.PlaySfx(openSound);
+            }
             OpenDoor();
         }
         else
         {
-            Debug.Log("Necesitas la llave para abrir esta celda.");
+            if(openSound)
+            {
+                AudioManager.Manager.PlaySfx(lockedSound);
+            }
         }
     }
 
@@ -40,8 +50,5 @@ public class HingeDoor : Interactable
         motor.targetVelocity = -100f; 
         motor.force = 20f; 
         hinge.motor = motor;
-        
-        Debug.Log("Abriendo...");
-
     }
 }

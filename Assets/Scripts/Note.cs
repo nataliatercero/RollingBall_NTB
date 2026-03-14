@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class Note : Interactable
 {
-    public GameObject letterContainer;
+    [SerializeField]public GameObject letterContainer;
+    [SerializeField]public AudioClip openSound;
 
     public override void OnInteract(Player player)
     {
+        // Antes de pausar el juego
+        if(openSound)
+        {
+            AudioManager.Manager.PlaySfx(openSound);
+        } 
         // Mostrar la nota
         letterContainer.SetActive(true);
 

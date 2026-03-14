@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
     
     private Rigidbody rb;
+    public static Player Instance;
     
+    public bool hasKey = false;
     
     private int jumpsRemaining;
     private const int MAX_JUMPS = 2; // Para doble salto
@@ -20,8 +22,9 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         // Para evitar el saltito del principio y que aparezca en medio de la sala
-        transform.position = new Vector3((float)0.427, (float)0.543, (float)-1.506);
+        transform.position = new Vector3(0.427f, 0.543f, -1.506f);
         rb = GetComponent<Rigidbody>();
     }
     

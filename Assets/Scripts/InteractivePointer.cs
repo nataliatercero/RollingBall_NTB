@@ -68,7 +68,14 @@ public class InteractivePointer : MonoBehaviour
 
     void Interact(GameObject objectInteract)
     {
-        Debug.Log("Has interactuado con " + objectInteract.name);
-        // Iré añadiendo cosas cuando tenga más objetos con los que interactuar
+        // Intentamos buscar si el objeto que tocamos tiene scrpt Interactable
+        Interactable item = objectInteract.GetComponent<Interactable>();
+
+        // Si el objeto tiene ese script 
+        if (item)
+        {
+            // Ejecutamos su propia lógica pasándole al jugador
+            item.OnInteract(Player.Instance);
+        }
     }
 }

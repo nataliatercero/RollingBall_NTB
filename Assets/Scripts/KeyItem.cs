@@ -7,7 +7,7 @@ public class KeyItem : Interactable
     {
         if(pickupSound)
         {
-            AudioManager.Instance.PlaySfx(pickupSound);
+            AudioManager.instance.PlaySfx(pickupSound);
         } 
         // Ponemos a true la variable en PLayer
         player.hasKey = true;

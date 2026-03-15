@@ -22,7 +22,7 @@ public class HingeDoor : Interactable
         {
             if(openSound)
             {
-                AudioManager.Instance.PlaySfx(openSound);
+                AudioManager.instance.PlaySfx(openSound);
             }
             OpenDoor();
         }
@@ -30,7 +30,7 @@ public class HingeDoor : Interactable
         {
             if(openSound)
             {
-                AudioManager.Instance.PlaySfx(lockedSound);
+                AudioManager.instance.PlaySfx(lockedSound);
             }
         }
     }

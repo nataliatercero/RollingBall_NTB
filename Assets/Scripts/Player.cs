@@ -48,24 +48,24 @@ public class Player : MonoBehaviour
         }
 
         // 2. Cargar los datos del GameManager (Textura y físicas de inicio de nivel)
-        if (GameManager.Instance && GameManager.Instance.hasSavedData)
+        if (GameManager.instance && GameManager.instance.hasSavedData)
         {
             ApplyPotionStats(
-                GameManager.Instance.savedMaterial,
-                GameManager.Instance.savedSpeed,
-                GameManager.Instance.savedJumpForce,
-                GameManager.Instance.savedMass,
-                GameManager.Instance.savedMaxJumps,
-                GameManager.Instance.savedBounceSound
+                GameManager.instance.savedMaterial,
+                GameManager.instance.savedSpeed,
+                GameManager.instance.savedJumpForce,
+                GameManager.instance.savedMass,
+                GameManager.instance.savedMaxJumps,
+                GameManager.instance.savedBounceSound
             );
             
             // Recuperamos el material físico de rebote (si lo teníamos)
-            if (GameManager.Instance.savedPhysicMaterial != null)
+            if (GameManager.instance.savedPhysicMaterial != null)
             {
                 Collider myCollider = GetComponent<Collider>();
                 if (myCollider != null)
                 {
-                    myCollider.material = GameManager.Instance.savedPhysicMaterial;
+                    myCollider.material = GameManager.instance.savedPhysicMaterial;
                 }
             }
         }
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
     // Enviarle los datos actuales al GameManager al pasar de nivel
     public void SaveCurrentStateToManager()
     {
-        if (GameManager.Instance)
+        if (GameManager.instance)
         {
             // Cogemos el material físico actual de nuestro collider
             Collider myCollider = GetComponent<Collider>();
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
             }
 
             // Se lo mandamos al GameManager
-            GameManager.Instance.SavePlayerState(
+            GameManager.instance.SavePlayerState(
                 meshRenderer.material, 
                 speed, 
                 jumpForce, 
@@ -174,12 +174,12 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // relativeVelocity mide la fuerza del golpe.
-        // Le pongo > 4f para que no suene infinitamente solo por estar rodando por el suelo.
-        if (currentBounceSound && collision.relativeVelocity.magnitude > 4f)
+        // Le pongo > 3f para que no suene infinitamente solo por estar rodando por el suelo.
+        if (currentBounceSound && collision.relativeVelocity.magnitude > 3f)
         {
-            if (AudioManager.Instance)
+            if (AudioManager.instance)
             {
-                AudioManager.Instance.PlaySfx(currentBounceSound);
+                AudioManager.instance.PlaySfx(currentBounceSound);
             }
         }
     }

@@ -8,7 +8,7 @@ public class CloseNoteButton : MonoBehaviour
     {
         if (closeSound)
         {
-            AudioManager.Instance.PlaySfx(closeSound);
+            AudioManager.instance.PlaySfx(closeSound);
         }
         
         // Apaga el LetterContainer

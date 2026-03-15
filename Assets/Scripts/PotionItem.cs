@@ -25,9 +25,9 @@ public class PotionItem : Interactable
         }
 
         // Sonido al obtener la poción
-        if (AudioManager.Instance && getSound)
+        if (AudioManager.instance && getSound)
         {
-            AudioManager.Instance.PlaySfx(getSound); 
+            AudioManager.instance.PlaySfx(getSound); 
         }
 
         // Destruir el frasco

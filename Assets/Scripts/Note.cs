@@ -10,7 +10,7 @@ public class Note : Interactable
         // Antes de pausar el juego
         if(openSound)
         {
-            AudioManager.Instance.PlaySfx(openSound);
+            AudioManager.instance.PlaySfx(openSound);
         } 
         // Mostrar la nota
         letterContainer.SetActive(true);

@@ -17,9 +17,9 @@ public class NextLevelTrigger : MonoBehaviour
             }
 
             // Llamar al GameManager para que ponga el fade y pase de nivel
-            if (GameManager.Instance != null)
+            if (GameManager.instance != null)
             {
-                GameManager.Instance.LoadNextLevel();
+                GameManager.instance.LoadNextLevel();
             }
         }
     }

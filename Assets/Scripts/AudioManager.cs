@@ -3,14 +3,14 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource sfxSource;
-    public static AudioManager Instance { get; private set; }
+    public static AudioManager instance { get; private set; }
 
     private void Awake()
     {
         // Si ya existe uno, destruye el nuevo para que no se repitan
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             // Hace que el sonido no se corte al cambiar de escena
             DontDestroyOnLoad(this.gameObject);
         }

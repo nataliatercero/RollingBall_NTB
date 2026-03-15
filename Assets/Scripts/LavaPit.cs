@@ -17,12 +17,12 @@ public class LavaPit : MonoBehaviour
             }
             
             // Invooke sirve para llamar a algo despues de un tiempo determinado
-            Invoke("LlamarGameOver", 1.5f);
+            Invoke("CallGameOver", 1.5f);
         }
         
     }
 
-    private void LlamarGameOver()
+    private void CallGameOver()
     {
         // Llamamos directamente al GameManager
         if (GameManager.instance)

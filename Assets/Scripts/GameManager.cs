@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject gameOverPanel;
     public Animator fadeAnimator;
+    public AudioClip dieSound;
     
     public bool hasSavedData = false;
     public Material savedMaterial;
@@ -34,6 +35,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (AudioManager.instance && dieSound)
+        {
+            AudioManager.instance.PlaySfx(dieSound);
+        }
         gameOverPanel.SetActive(true);
         Time.timeScale = 0f; // Pausamos el juego
         Cursor.visible = true;

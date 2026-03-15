@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private MeshRenderer meshRenderer;
     public static Player Instance;
+    private Vector3 initialPosition { get; set; }
+    public GameObject objectToClear;
     
     public bool hasKey = false;
     
@@ -40,12 +42,7 @@ public class Player : MonoBehaviour
             camTransform = Camera.main.transform;
         }
         
-        // 1. Ir al punto de aparición del nivel actual
-        GameObject spawnPoint = GameObject.FindGameObjectWithTag("Respawn");
-        if (spawnPoint)
-        {
-            transform.position = spawnPoint.transform.position;
-        }
+        initialPosition = transform.position;
 
         // 2. Cargar los datos del GameManager (Textura y físicas de inicio de nivel)
         if (GameManager.instance && GameManager.instance.hasSavedData)
@@ -60,10 +57,10 @@ public class Player : MonoBehaviour
             );
             
             // Recuperamos el material físico de rebote (si lo teníamos)
-            if (GameManager.instance.savedPhysicMaterial != null)
+            if (GameManager.instance.savedPhysicMaterial)
             {
                 Collider myCollider = GetComponent<Collider>();
-                if (myCollider != null)
+                if (myCollider)
                 {
                     myCollider.material = GameManager.instance.savedPhysicMaterial;
                 }
@@ -197,5 +194,13 @@ public class Player : MonoBehaviour
         
         // Guardamos el sonido que nos ha dado la poción
         currentBounceSound = newBounceSound; 
+    }
+    
+    public void ClearText()
+    {
+        if (objectToClear)
+        {
+            objectToClear.SetActive(false);
+        }
     }
 }

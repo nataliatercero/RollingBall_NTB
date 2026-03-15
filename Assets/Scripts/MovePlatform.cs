@@ -7,14 +7,14 @@ public class MovePlatform : MonoBehaviour
     public float speed = 2f;
     
     private Vector3 initialPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         initialPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         // Calculamos el movimiento ida y vuelta
         float factor = Mathf.Sin(Time.time * speed) * distanceFromOrigin;
@@ -27,6 +27,7 @@ public class MovePlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Hacemos que la bola sea "hija" de la plataforma
+            // Evito que la plataforma deforme a la bola haciendo un Empty Object y añadiendo el RB y el Script a este (con escala 1, 1, 1)
             collision.gameObject.transform.SetParent(transform);
         }
     }

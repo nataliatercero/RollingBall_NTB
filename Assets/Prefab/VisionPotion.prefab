@@ -52,7 +52,7 @@ MonoBehaviour:
   newPhysics: {fileID: 0}
   getSound: {fileID: 8300000, guid: 56eedddfebdc5824292e075816c4f9fe, type: 3}
   bounceSound: {fileID: 8300000, guid: 0d4aede72b397f344a148c14390d590f, type: 3}
-  potionName: Vision
+  nameOfPotion: Vision
   newSpeed: 10
   newJumpForce: 7
   newMass: 1

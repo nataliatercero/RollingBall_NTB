@@ -60,7 +60,7 @@ MonoBehaviour:
   newPhysics: {fileID: 13400000, guid: 5746c643e4c940142952984c3fa16e16, type: 2}
   getSound: {fileID: 8300000, guid: 56eedddfebdc5824292e075816c4f9fe, type: 3}
   bounceSound: {fileID: 8300000, guid: 7a464ad4c99af524c92857438d26e6d6, type: 3}
-  potionName: Rubber
+  nameOfPotion: Rubber
   newSpeed: 8
   newJumpForce: 8
   newMass: 1.5

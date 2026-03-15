@@ -203,4 +203,20 @@ public class Player : MonoBehaviour
             objectToClear.SetActive(false);
         }
     }
+
+    public void PotionMessage(string nameOfPotion)
+    {
+        GameObject toShow = null;
+
+        if (nameOfPotion == "Rubber") toShow = GameManager.instance.rubberText;
+        if (nameOfPotion == "Plumb") toShow = GameManager.instance.plumbText;
+        if (nameOfPotion == "Vision") toShow = GameManager.instance.visionText;
+
+        if (toShow)
+        {
+            toShow.SetActive(true);
+            objectToClear = toShow;
+            Invoke("ClearText", 3f);
+        }
+    }
 }

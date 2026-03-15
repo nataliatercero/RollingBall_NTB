@@ -179,7 +179,7 @@ MonoBehaviour:
   newPhysics: {fileID: 0}
   getSound: {fileID: 8300000, guid: 56eedddfebdc5824292e075816c4f9fe, type: 3}
   bounceSound: {fileID: 8300000, guid: c800c481decf94c42857b8549b63279f, type: 3}
-  potionName: Plumb
+  nameOfPotion: Plumb
   newSpeed: 20
   newJumpForce: 15
   newMass: 15

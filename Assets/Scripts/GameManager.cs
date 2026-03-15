@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public Animator fadeAnimator;
     public AudioClip dieSound;
     
+    public GameObject rubberText;
+    public GameObject plumbText;
+    public GameObject visionText;
+    
     public bool hasSavedData = false;
     public Material savedMaterial;
     public float savedSpeed = 10f;

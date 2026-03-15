@@ -192,6 +192,9 @@ MonoBehaviour:
   gameOverPanel: {fileID: 2319800169629092776}
   fadeAnimator: {fileID: 7472662532672879583}
   dieSound: {fileID: 8300000, guid: e763f185b1239374cb50f49c7b5fa4c2, type: 3}
+  rubberText: {fileID: 1832367509172673956}
+  plumbText: {fileID: 2452554899469410915}
+  visionText: {fileID: 3268062086696272958}
   hasSavedData: 0
   savedMaterial: {fileID: 0}
   savedSpeed: 10
@@ -265,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You drank a Rubber potion
+  m_text: "Ha bebido una poci\xF3n de Goma"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -585,7 +588,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You drank a Plumb potion
+  m_text: "Has bebido una poci\xF3n de Plomo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -722,7 +725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You drank a Vision potion
+  m_text: "Has bebido una posci\xF3n de Visi\xF3n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

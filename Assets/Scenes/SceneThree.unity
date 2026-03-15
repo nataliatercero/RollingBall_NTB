@@ -2124,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0545388
+      value: 1.7654035
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalScale.y
@@ -2132,11 +2132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9709401
+      value: 1.6810857
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.109
+      value: -3.5308
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2144,7 +2144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.09
+      value: -9.06
       objectReference: {fileID: 0}
     - target: {fileID: 838670127670205521, guid: 388d9b17ab21db24abe453cf6da856ae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4827,6 +4827,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 795165706614100933, guid: c863f656782d099438e2f1ba789301c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1131542667}
+    - targetCorrespondingSourceObject: {fileID: 795165706614100933, guid: c863f656782d099438e2f1ba789301c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1131542668}
   m_SourcePrefab: {fileID: 100100000, guid: c863f656782d099438e2f1ba789301c8, type: 3}
 --- !u!4 &702286228 stripped
 Transform:
@@ -8078,6 +8081,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6788037653591411210, guid: 56351ca12b627de41b48b41f8ba47ebc, type: 3}
+--- !u!114 &1131542668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131542664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6ac525edde6e043a53fea2cd0b399c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisionPotion
+  newMaterial: {fileID: 0}
+  newPhysics: {fileID: 0}
+  getSound: {fileID: 0}
+  bounceSound: {fileID: 0}
+  nameOfPotion: 
+  newSpeed: 10
+  newJumpForce: 7
+  newMass: 1
+  newMaxJumps: 1
+  steps: {fileID: 0}
 --- !u!1 &1141091743
 GameObject:
   m_ObjectHideFlags: 0

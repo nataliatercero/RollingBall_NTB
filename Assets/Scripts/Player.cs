@@ -4,14 +4,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private int maxJumps = 2;
     
     private Rigidbody rb;
+    private MeshRenderer meshRenderer;
     public static Player Instance;
     
     public bool hasKey = false;
     
     private int jumpsRemaining;
-    private const int MAX_JUMPS = 2; // Para doble salto
     private bool isGrounded;
     
     
@@ -19,24 +20,56 @@ public class Player : MonoBehaviour
     private float vInput;
     
     private Transform camTransform;
+    
+    private AudioClip currentBounceSound;
 
     void Awake()
     {
         Instance = this;
-        // Para evitar el saltito del principio y que aparezca en medio de la sala
-        transform.position = new Vector3(0.427f, 0.543f, -1.506f);
+        meshRenderer = GetComponent<MeshRenderer>();
         rb = GetComponent<Rigidbody>();
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        jumpsRemaining = MAX_JUMPS;
+        jumpsRemaining = maxJumps;
         
-        if (Camera.main != null) 
+        if (Camera.main) 
         {
             camTransform = Camera.main.transform;
         }
+        
+        // 1. Ir al punto de aparición del nivel actual
+        GameObject spawnPoint = GameObject.FindGameObjectWithTag("Respawn");
+        if (spawnPoint)
+        {
+            transform.position = spawnPoint.transform.position;
+        }
+
+        // 2. Cargar los datos del GameManager (Textura y físicas de inicio de nivel)
+        if (GameManager.Instance && GameManager.Instance.hasSavedData)
+        {
+            ApplyPotionStats(
+                GameManager.Instance.savedMaterial,
+                GameManager.Instance.savedSpeed,
+                GameManager.Instance.savedJumpForce,
+                GameManager.Instance.savedMass,
+                GameManager.Instance.savedMaxJumps,
+                GameManager.Instance.savedBounceSound
+            );
+            
+            // Recuperamos el material físico de rebote (si lo teníamos)
+            if (GameManager.Instance.savedPhysicMaterial != null)
+            {
+                Collider myCollider = GetComponent<Collider>();
+                if (myCollider != null)
+                {
+                    myCollider.material = GameManager.Instance.savedPhysicMaterial;
+                }
+            }
+        }
+
     }
 
     // Update is called once per frame
@@ -50,7 +83,7 @@ public class Player : MonoBehaviour
             // Si estamos en el suelo, reseteamos los saltos a MAX_JUMPS antes de saltar
             if (IsGrounded())
             {
-                jumpsRemaining = MAX_JUMPS;
+                jumpsRemaining = maxJumps;
             }
 
             // Si aún nos quedan saltos, permitimos saltar
@@ -99,5 +132,70 @@ public class Player : MonoBehaviour
         // La distancia es la mitad de la escala (para abarcar solo el radio) + un pequeño margen (0.1f)
         float rayDistance = (transform.localScale.y / 2f) + 0.1f;
         return Physics.Raycast(transform.position, Vector3.down, rayDistance);
+    }
+    
+    // Cualquier poción llamará a esta función para transformar al jugador
+    public void ApplyPotionStats(Material newMat, float newSpeed, float newJump, float newMass, int newMaxJumps)
+    {
+        if (newMat) meshRenderer.material = newMat;
+        speed = newSpeed;
+        jumpForce = newJump;
+        rb.mass = newMass;
+        maxJumps = newMaxJumps;
+    }
+    
+    // Enviarle los datos actuales al GameManager al pasar de nivel
+    public void SaveCurrentStateToManager()
+    {
+        if (GameManager.Instance)
+        {
+            // Cogemos el material físico actual de nuestro collider
+            Collider myCollider = GetComponent<Collider>();
+            PhysicsMaterial currentPhysMat = null;
+            
+            if (myCollider)
+            {
+                currentPhysMat = myCollider.material;
+            }
+
+            // Se lo mandamos al GameManager
+            GameManager.Instance.SavePlayerState(
+                meshRenderer.material, 
+                speed, 
+                jumpForce, 
+                rb.mass, 
+                maxJumps,
+                currentPhysMat, 
+                currentBounceSound 
+            );
+        }
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        // relativeVelocity mide la fuerza del golpe.
+        // Le pongo > 4f para que no suene infinitamente solo por estar rodando por el suelo.
+        if (currentBounceSound && collision.relativeVelocity.magnitude > 4f)
+        {
+            if (AudioManager.Instance)
+            {
+                AudioManager.Instance.PlaySfx(currentBounceSound);
+            }
+        }
+    }
+    
+    public void ApplyPotionStats(Material newMat, float newSpeed, float newJump, float newMass, int newMaxJumps, AudioClip newBounceSound)
+    {
+        if (newMat)
+        {
+            meshRenderer.material = newMat;
+        }
+        speed = newSpeed;
+        jumpForce = newJump;
+        rb.mass = newMass;
+        maxJumps = newMaxJumps;
+        
+        // Guardamos el sonido que nos ha dado la poción
+        currentBounceSound = newBounceSound; 
     }
 }

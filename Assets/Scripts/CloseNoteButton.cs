@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class CloseNoteButton : MonoBehaviour
 {
-    [SerializeField]public AudioClip closeSound;
+    public AudioClip closeSound;
     
     public void Close()
     {
         if (closeSound)
         {
-            AudioManager.Manager.PlaySfx(closeSound);
+            AudioManager.Instance.PlaySfx(closeSound);
         }
         
         // Apaga el LetterContainer

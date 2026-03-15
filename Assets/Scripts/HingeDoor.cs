@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HingeDoor : Interactable
 {
-    [SerializeField]public AudioClip openSound;
-    [SerializeField]public AudioClip lockedSound;
+    public AudioClip openSound;
+    public AudioClip lockedSound;
     
     private HingeJoint hinge;
     private JointMotor motor;
@@ -22,7 +22,7 @@ public class HingeDoor : Interactable
         {
             if(openSound)
             {
-                AudioManager.Manager.PlaySfx(openSound);
+                AudioManager.Instance.PlaySfx(openSound);
             }
             OpenDoor();
         }
@@ -30,7 +30,7 @@ public class HingeDoor : Interactable
         {
             if(openSound)
             {
-                AudioManager.Manager.PlaySfx(lockedSound);
+                AudioManager.Instance.PlaySfx(lockedSound);
             }
         }
     }
